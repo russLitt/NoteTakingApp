@@ -1,5 +1,6 @@
 package com.example.notetakingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.notetakingapp.model.NoteEntity;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static com.example.notetakingapp.R.id.recycler_view;
 
@@ -30,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
 
    @BindView(R.id.recycler_view)
    RecyclerView mRecyclerView;
+
+   @OnClick(R.id.fab)
+   void fabClickHandler() {
+        Intent intent = new Intent(this, EditorActivity.class);
+        startActivity(intent);
+   }
 
    private List<NoteEntity> notesData = new ArrayList<>();
    private NotesAdapter mAdapter;
@@ -43,15 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         initRecyclerView();
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         notesData.addAll(SampleData.getNotes());
         for (NoteEntity note :
