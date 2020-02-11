@@ -1,4 +1,4 @@
-package com.example.notetakingapp.model;
+package com.example.notetakingapp.database;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;

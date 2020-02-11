@@ -1,6 +1,6 @@
 package com.example.notetakingapp.utillities;
 
-import com.example.notetakingapp.model.NoteEntity;
+import com.example.notetakingapp.database.NoteEntity;
 
 import java.util.ArrayList;
 import java.util.Calendar;

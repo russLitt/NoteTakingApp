@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notetakingapp.R;
-import com.example.notetakingapp.model.NoteEntity;
+import com.example.notetakingapp.database.NoteEntity;
 
 import java.util.List;
 

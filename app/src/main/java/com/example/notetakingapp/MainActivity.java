@@ -3,11 +3,9 @@ package com.example.notetakingapp;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.notetakingapp.model.NoteEntity;
+import com.example.notetakingapp.database.NoteEntity;
 import com.example.notetakingapp.ui.NotesAdapter;
 import com.example.notetakingapp.utillities.SampleData;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -25,8 +22,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.example.notetakingapp.R.id.recycler_view;
 
 public class MainActivity extends AppCompatActivity {
 
