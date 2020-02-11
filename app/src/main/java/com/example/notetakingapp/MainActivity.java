@@ -6,9 +6,11 @@ import android.os.Bundle;
 import com.example.notetakingapp.database.NoteEntity;
 import com.example.notetakingapp.ui.NotesAdapter;
 import com.example.notetakingapp.utillities.SampleData;
+import com.example.notetakingapp.viewmodel.MainViewModel;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
    private List<NoteEntity> notesData = new ArrayList<>();
    private NotesAdapter mAdapter;
+   private MainViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +48,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ButterKnife.bind(this);
+        initViewModel();
         initRecyclerView();
 
-        notesData.addAll(SampleData.getNotes());
+        notesData.addAll(mViewModel.mNotes);
         for (NoteEntity note :
             notesData) {
             Log.i("NoteTakingApp", note.toString());
         }
+    }
+
+    private void initViewModel() {
+        //mViewModel = ViewModelProvider.get(MainViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     }
 
     private void initRecyclerView() {
