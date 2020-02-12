@@ -28,12 +28,7 @@ public class AppRepository {
     }
 
     public void addSampleData() {
-        executor.execute(new Runnable() {
-            @Override
-            public void run() {
-                mDb.noteDao().insertAll(SampleData.getNotes());
-            }
-        });
+        executor.execute(() -> mDb.noteDao().insertAll(SampleData.getNotes()));
 
     }
 }
