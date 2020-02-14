@@ -48,4 +48,8 @@ public class AppRepository {
     public void insertNote(NoteEntity note) {
         executor.execute(() -> mDb.noteDao().insertNote(note));
     }
+
+    public void deleteNote(final NoteEntity note) {
+        executor.execute(() -> mDb.noteDao().deleteNote(note));
+    }
 }

@@ -14,6 +14,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -62,10 +64,22 @@ public class EditorActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (!mNewNote) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.menu_editor, menu);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             saveAndReturn();
             return true;
+        } else if (item.getItemId() == R.id.action_delete) {
+            mViewModel.deleteNote();
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
