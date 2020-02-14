@@ -44,4 +44,8 @@ public class AppRepository {
     public NoteEntity getNotesById(int noteId) {
         return mDb.noteDao().getNoteById(noteId);
     }
+
+    public void insertNote(NoteEntity note) {
+        executor.execute(() -> mDb.noteDao().insertNote(note));
+    }
 }
