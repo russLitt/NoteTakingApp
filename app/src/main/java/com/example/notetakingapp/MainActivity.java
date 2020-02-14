@@ -2,10 +2,8 @@ package com.example.notetakingapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.notetakingapp.database.NoteEntity;
-import com.example.notetakingapp.ui.NotesAdapter;
-import com.example.notetakingapp.viewmodel.MainViewModel;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,8 +13,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Menu;
-import android.view.MenuItem;
+import com.example.notetakingapp.database.NoteEntity;
+import com.example.notetakingapp.ui.NotesAdapter;
+import com.example.notetakingapp.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

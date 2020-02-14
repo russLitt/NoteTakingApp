@@ -1,24 +1,17 @@
 package com.example.notetakingapp;
 
 import android.os.Bundle;
-
-import com.example.notetakingapp.database.NoteEntity;
-import com.example.notetakingapp.viewmodel.EditorViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+import com.example.notetakingapp.viewmodel.EditorViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

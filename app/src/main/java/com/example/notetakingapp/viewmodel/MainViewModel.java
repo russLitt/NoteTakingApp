@@ -8,7 +8,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.notetakingapp.database.AppRepository;
 import com.example.notetakingapp.database.NoteEntity;
-import com.example.notetakingapp.utillities.SampleData;
 
 import java.util.List;
 
