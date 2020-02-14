@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.notetakingapp.database.AppRepository;
 import com.example.notetakingapp.database.NoteEntity;

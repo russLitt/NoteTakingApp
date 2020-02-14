@@ -23,6 +23,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.notetakingapp.utillities.Constants.EDITING_KEY;
 import static com.example.notetakingapp.utillities.Constants.NOTE_ID_KEY;
 
 public class EditorActivity extends AppCompatActivity {
@@ -31,7 +32,7 @@ public class EditorActivity extends AppCompatActivity {
     TextView mTextView;
 
     private EditorViewModel mViewModel;
-    private boolean mNewNote;
+    private boolean mNewNote, mEditing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class EditorActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ButterKnife.bind(this);
+
+        if (savedInstanceState != null) {
+            mEditing = savedInstanceState.getBoolean(EDITING_KEY);
+        }
         
         initViewModel();
     }
@@ -50,7 +55,13 @@ public class EditorActivity extends AppCompatActivity {
     private void initViewModel() {
         mViewModel = new ViewModelProvider(this).get(EditorViewModel.class);
 
-        mViewModel.mLiveNote.observe(this, noteEntity -> mTextView.setText(noteEntity.getText()));
+        //mViewModel.mLiveNote.observe(this, noteEntity -> mTextView.setText(noteEntity.getText()));
+
+        mViewModel.mLiveNote.observe(this, (noteEntity) -> {
+            if (noteEntity != null && !mEditing) {
+                mTextView.setText(noteEntity.getText());
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
@@ -92,6 +103,12 @@ public class EditorActivity extends AppCompatActivity {
     private void saveAndReturn() {
         mViewModel.saveNote(mTextView.getText().toString());
         finish();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putBoolean(EDITING_KEY, true);
+        super.onSaveInstanceState(outState);
     }
 }
 
