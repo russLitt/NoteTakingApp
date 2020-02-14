@@ -1,6 +1,7 @@
 package com.example.notetakingapp.viewmodel;
 
 import android.app.Application;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -10,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.notetakingapp.database.AppRepository;
 import com.example.notetakingapp.database.NoteEntity;
 
+import java.util.Date;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -35,9 +37,12 @@ public class EditorViewModel extends AndroidViewModel {
         NoteEntity note = mLiveNote.getValue();
 
         if (note == null) {
-            
+            if (TextUtils.isEmpty(noteText.trim())) {
+                return;
+            }
+            note = new NoteEntity(new Date(), noteText.trim());
         } else {
-            note.setText(noteText);
+            note.setText(noteText.trim());
         }
         mRepository.insertNote(note);
     }
