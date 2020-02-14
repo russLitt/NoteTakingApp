@@ -53,18 +53,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViewModel() {
-        final Observer<List<NoteEntity>> notesObserver = new Observer<List<NoteEntity>>() {
-            @Override
-            public void onChanged(List<NoteEntity> noteEntities) {
-                notesData.clear();
-                notesData.addAll(noteEntities);
+        final Observer<List<NoteEntity>> notesObserver = noteEntities -> {
+            notesData.clear();
+            notesData.addAll(noteEntities);
 
-                if (mAdapter == null) {
-                    mAdapter = new NotesAdapter(notesData, MainActivity.this);
-                    mRecyclerView.setAdapter(mAdapter);
-                } else {
-                    mAdapter.notifyDataSetChanged();
-                }
+            if (mAdapter == null) {
+                mAdapter = new NotesAdapter(notesData, MainActivity.this);
+                mRecyclerView.setAdapter(mAdapter);
+            } else {
+                mAdapter.notifyDataSetChanged();
             }
         };
 
@@ -100,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             deleteAllNotes();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
