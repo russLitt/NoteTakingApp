@@ -20,7 +20,7 @@ public class MainViewModel extends AndroidViewModel {
         super(application);
 
         mRepository = AppRepository.getInstance(application.getApplicationContext());
-        mNotes =  mRepository.mNotes;
+        mNotes = mRepository.mNotes;
     }
 
     public void addSampleData() {

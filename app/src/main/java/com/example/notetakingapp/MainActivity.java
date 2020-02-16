@@ -26,18 +26,18 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-   @BindView(R.id.recycler_view)
-   RecyclerView mRecyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
 
-   @OnClick(R.id.fab)
-   void fabClickHandler() {
+    @OnClick(R.id.fab)
+    void fabClickHandler() {
         Intent intent = new Intent(this, EditorActivity.class);
         startActivity(intent);
-   }
+    }
 
-   private List<NoteEntity> notesData = new ArrayList<>();
-   private NotesAdapter mAdapter;
-   private MainViewModel mViewModel;
+    private List<NoteEntity> notesData = new ArrayList<>();
+    private NotesAdapter mAdapter;
+    private MainViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_add_sample_data) {
             addSampleData();
             return true;
-        } else if(id == R.id.action_delete_all) {
+        } else if (id == R.id.action_delete_all) {
             deleteAllNotes();
             return true;
         }

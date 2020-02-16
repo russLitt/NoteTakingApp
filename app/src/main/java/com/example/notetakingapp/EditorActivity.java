@@ -41,14 +41,12 @@ public class EditorActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             mEditing = savedInstanceState.getBoolean(EDITING_KEY);
         }
-        
+
         initViewModel();
     }
 
     private void initViewModel() {
         mViewModel = new ViewModelProvider(this).get(EditorViewModel.class);
-
-        //mViewModel.mLiveNote.observe(this, noteEntity -> mTextView.setText(noteEntity.getText()));
 
         mViewModel.mLiveNote.observe(this, (noteEntity) -> {
             if (noteEntity != null && !mEditing) {
